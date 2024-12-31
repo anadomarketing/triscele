@@ -31,6 +31,7 @@
 </head>
 
 <body class="index-page">
+
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/48635767.js"></script>
 <!-- End of HubSpot Embed Code -->
@@ -595,7 +596,42 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
     }
 </script>
 
+<!-- Script de Validação do Formulário -->
+<script>
+  document.getElementById('form-contato').addEventListener('submit', function(event) {
+    event.preventDefault();  // Impede o envio real do formulário
 
+    // Definindo o campo de e-mail de resposta para o e-mail do cliente
+    var email = document.getElementById('email').value;
+    document.getElementById('replyTo').value = email;
+
+    var resposta = document.getElementById('pergunta').value;
+
+    // Verifica se a resposta está correta
+    if (resposta != "11") {
+      alert("Resposta incorreta. Tente novamente.");
+    } else {
+      // Esconde o formulário e exibe a mensagem de agradecimento
+      document.getElementById('formulario').style.display = 'none';
+      document.getElementById('mensagem-agradecimento').style.display = 'block';
+
+      // Enviar o formulário para o StaticForms usando JavaScript (fetch API)
+      var formData = new FormData(document.getElementById('form-contato'));
+
+      fetch('https://api.staticforms.xyz/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())  // Processa a resposta do servidor
+      .then(data => {
+        console.log('Sucesso:', data);  // Exibe ou processa o retorno
+      })
+      .catch(error => {
+        console.error('Erro:', error);  // Exibe erros no console caso ocorra algum problema
+      });
+    }
+  });
+</script>
 
 
 
