@@ -646,6 +646,51 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
   }
 </script>
 
+<script>
+  // Função de validação do formulário
+  function validarFormulario() {
+    var resposta = document.getElementById("pergunta").value;
+    var respostaCorreta = "11"; // Resposta correta para "Quanto é 8 + 3?"
+
+    if (resposta !== respostaCorreta) {
+      alert("Resposta incorreta. Tente novamente!");
+      return false; // Impede o envio do formulário se a resposta estiver errada
+    }
+
+    // Se a resposta for correta, seta o campo de replyTo com o email
+    var email = document.getElementById("email").value;
+    document.getElementById("replyTo").value = email;
+
+    // Envio do formulário via JavaScript (não redireciona a página)
+    enviarFormulario();
+
+    return false; // Impede o envio tradicional do formulário, pois já estamos enviando com JavaScript
+  }
+
+  // Função para enviar o formulário via fetch API
+  function enviarFormulario() {
+    var formData = new FormData(document.getElementById('form-contato'));
+
+    fetch('https://api.staticforms.xyz/submit', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())  // Processa a resposta do servidor
+    .then(data => {
+      console.log('Sucesso:', data);  // Exibe ou processa o retorno
+      // Aqui você pode adicionar o que deseja fazer após o envio (ex: mostrar uma mensagem de sucesso)
+      alert("Formulário enviado com sucesso!");
+      
+      // Voltar ao topo da página após o envio bem-sucedido
+      window.scrollTo(0, 0); // Rolando para o topo
+    })
+    .catch(error => {
+      console.error('Erro:', error);  // Exibe erros no console caso ocorra algum problema
+      alert("Erro ao enviar o formulário. Tente novamente mais tarde.");
+    });
+  }
+</script>
+
   </main>
 
   <footer id="footer" class="footer dark-background">
