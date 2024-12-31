@@ -533,12 +533,9 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
 
 <!-- Formulário de Contato -->
 <div class="col-lg-8">
-  <form id="form-contato" action="https://api.staticforms.xyz/submit" method="post" onsubmit="return validarFormulario()">
+  <form id="form-contato" action="https://forms.hubspot.com/uploads/form/v2/YOUR_PORTAL_ID/YOUR_FORM_GUID" method="post">
     <!-- Campo Honeypot para evitar bots -->
     <input type="text" name="honeypot" style="display: none;"> 
-
-    <!-- Chave de acesso fornecida pelo StaticForms -->
-    <input type="hidden" name="accessKey" value="bb3f4996-d9e9-4320-82c0-ad9cf9fc9a9a"> 
 
     <div class="row">
       <div class="col-md-6">
@@ -602,93 +599,14 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
-  // Função de validação do formulário
-  function validarFormulario() {
-    var resposta = document.getElementById("pergunta").value;
-    var respostaCorreta = "11"; // Resposta correta para "Quanto é 8 + 3?"
-
-    if (resposta !== respostaCorreta) {
-      alert("Resposta incorreta. Tente novamente!");
-      return false; // Impede o envio do formulário se a resposta estiver errada
+  // Função para garantir que o formulário está sendo enviado após validação do reCAPTCHA
+  document.getElementById('form-contato').addEventListener('submit', function (e) {
+    var recaptchaResponse = grecaptcha.getResponse();
+    if (!recaptchaResponse) {
+      alert('Por favor, verifique o reCAPTCHA.');
+      e.preventDefault(); // Impede o envio do formulário se o reCAPTCHA não foi validado
     }
-
-    // Se a resposta for correta, seta o campo de replyTo com o email
-    var email = document.getElementById("email").value;
-    document.getElementById("replyTo").value = email;
-
-    // Envio do formulário via JavaScript (não redireciona a página)
-    enviarFormulario();
-
-    return false; // Impede o envio tradicional do formulário, pois já estamos enviando com JavaScript
-  }
-
-  // Função para enviar o formulário via fetch API
-  function enviarFormulario() {
-    var formData = new FormData(document.getElementById('form-contato'));
-
-    fetch('https://api.staticforms.xyz/submit', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())  // Processa a resposta do servidor
-    .then(data => {
-      console.log('Sucesso:', data);  // Exibe ou processa o retorno
-      // Aqui você pode adicionar o que deseja fazer após o envio (ex: mostrar uma mensagem de sucesso)
-      alert("Formulário enviado com sucesso!");
-      
-      // Voltar ao topo da página após o envio bem-sucedido
-      window.scrollTo(0, 0); // Rolando para o topo
-    })
-    .catch(error => {
-      console.error('Erro:', error);  // Exibe erros no console caso ocorra algum problema
-      alert("Erro ao enviar o formulário. Tente novamente mais tarde.");
-    });
-  }
-</script>
-
-<script>
-  // Função de validação do formulário
-  function validarFormulario() {
-    var resposta = document.getElementById("pergunta").value;
-    var respostaCorreta = "11"; // Resposta correta para "Quanto é 8 + 3?"
-
-    if (resposta !== respostaCorreta) {
-      alert("Resposta incorreta. Tente novamente!");
-      return false; // Impede o envio do formulário se a resposta estiver errada
-    }
-
-    // Se a resposta for correta, seta o campo de replyTo com o email
-    var email = document.getElementById("email").value;
-    document.getElementById("replyTo").value = email;
-
-    // Envio do formulário via JavaScript (não redireciona a página)
-    enviarFormulario();
-
-    return false; // Impede o envio tradicional do formulário, pois já estamos enviando com JavaScript
-  }
-
-  // Função para enviar o formulário via fetch API
-  function enviarFormulario() {
-    var formData = new FormData(document.getElementById('form-contato'));
-
-    fetch('https://api.staticforms.xyz/submit', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())  // Processa a resposta do servidor
-    .then(data => {
-      console.log('Sucesso:', data);  // Exibe ou processa o retorno
-      // Aqui você pode adicionar o que deseja fazer após o envio (ex: mostrar uma mensagem de sucesso)
-      alert("Formulário enviado com sucesso!");
-      
-      // Voltar ao topo da página após o envio bem-sucedido
-      window.scrollTo(0, 0); // Rolando para o topo
-    })
-    .catch(error => {
-      console.error('Erro:', error);  // Exibe erros no console caso ocorra algum problema
-      alert("Erro ao enviar o formulário. Tente novamente mais tarde.");
-    });
-  }
+  });
 </script>
 
   </main>
