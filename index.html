@@ -593,6 +593,16 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
     <!-- Campo de resposta (para enviar o e-mail de retorno para o cliente) -->
     <input type="hidden" name="replyTo" id="replyTo">
   </form>
+
+  <!-- Mensagem de sucesso -->
+  <div id="mensagem-sucesso" class="alert alert-success" style="display: none;">
+    <strong>Sucesso!</strong> Seu formulário foi enviado com sucesso.
+  </div>
+
+  <!-- Mensagem de erro -->
+  <div id="mensagem-erro" class="alert alert-danger" style="display: none;">
+    <strong>Erro!</strong> Ocorreu um problema ao enviar o formulário. Tente novamente.
+  </div>
 </div><!-- End Formulário -->
 
 <!-- Carregamento do reCAPTCHA -->
@@ -605,6 +615,27 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
     if (!recaptchaResponse) {
       alert('Por favor, verifique o reCAPTCHA.');
       e.preventDefault(); // Impede o envio do formulário se o reCAPTCHA não foi validado
+    } else {
+      // Previne o envio padrão do formulário para mostrar a resposta do HubSpot
+      e.preventDefault();
+      
+      var formData = new FormData(this);
+      
+      fetch('https://forms.hubspot.com/uploads/form/v2/48635767/f7f800ad-abc5-42a9-9037-f40346e1f3b0', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        // Mostrar mensagem de sucesso
+        document.getElementById('mensagem-sucesso').style.display = 'block';
+        // Resetar o formulário após envio
+        document.getElementById('form-contato').reset();
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+        // Mostrar mensagem de erro
+        document.getElementById('mensagem-erro').style.display = 'block';
+      });
     }
   });
 </script>
