@@ -32,10 +32,10 @@
 
 <body class="index-page">
 
-<!-- Start of HubSpot Embed Code -->
+	<!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/48635767.js"></script>
 <!-- End of HubSpot Embed Code -->
-	
+
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
@@ -519,12 +519,13 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
 
 <!-- Formulário de Contato -->
 <div class="col-lg-8">
-  <form id="form-contato" action="https://api.staticforms.xyz/submit" method="post">
+  <form id="form-contato" action="https://api.staticforms.xyz/submit" method="post" onsubmit="return validarFormulario()">
     <!-- Campo Honeypot para evitar bots -->
     <input type="text" name="honeypot" style="display: none;"> 
 
     <!-- Chave de acesso fornecida pelo StaticForms -->
     <input type="hidden" name="accessKey" value="bb3f4996-d9e9-4320-82c0-ad9cf9fc9a9a"> 
+
     <div class="row">
       <div class="col-md-6">
         <div class="mb-3">
@@ -538,14 +539,14 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
       </div>
     </div>
     
-	  <!-- Campo E-mail (para o cliente receber a resposta) -->
+    <!-- Campo E-mail (para o cliente receber a resposta) -->
     <div class="mb-3">
       <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
     </div>
-	
+    
     <!-- Campo Segmento da Empresa -->
     <div class="mb-3">
-      <select class="form-control" name="$segmento" required>
+      <select class="form-control" name="segmento" required>
         <option value="" disabled selected>Segmento da sua empresa</option>
         <option value="Alimentação">Alimentação</option>
         <option value="Varejo">Moda e/ou Varejo</option>
@@ -560,7 +561,7 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
 
     <!-- Campo Faturamento Mensal -->
     <div class="mb-3">
-      <select class="form-control" name="$faturamento" required>
+      <select class="form-control" name="faturamento" required>
         <option value="" disabled selected>Faturamento mensal</option>
         <option value="30 a 50 mil">30 a 50 mil</option>
         <option value="50 a 80 mil">50 a 80 mil</option>
@@ -568,78 +569,60 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
         <option value="Acima de 120 mil">Acima de 120 mil</option>
       </select>
     </div>
-	
-   <form onsubmit="return validarFormulario()">
+    
+    <!-- Pergunta de segurança (Honeypot) -->
     <div class="mb-3">
-        <input type="text" class="form-control" id="pergunta" name="pergunta" placeholder="Quanto é 8 + 3?" required>
-    </div><div class="text-center">
-    <input type="submit" button type="submit" class="btn btn-primary"></button>
-</form></div>
+      <input type="text" class="form-control" id="pergunta" name="pergunta" placeholder="Quanto é 8 + 3?" required>
+    </div>
+    
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
 
     <!-- Campo de resposta (para enviar o e-mail de retorno para o cliente) -->
-    <input type="hidden" name="replyTo" id="replyTo"> <!-- Isso faz o e-mail de resposta ir para o e-mail do cliente -->
-
-    
+    <input type="hidden" name="replyTo" id="replyTo">
+  </form>
 </div><!-- End Formulário -->
 
 <script>
-    function validarFormulario() {
-        var resposta = document.getElementById("pergunta").value;
-        var respostaCorreta = "11"; // Resposta correta para "Quanto é 8 + 3?"
+  // Função de validação do formulário
+  function validarFormulario() {
+    var resposta = document.getElementById("pergunta").value;
+    var respostaCorreta = "11"; // Resposta correta para "Quanto é 8 + 3?"
 
-        if (resposta !== respostaCorreta) {
-            alert("Resposta incorreta. Tente novamente!");
-            return false; // Impede o envio do formulário
-        }
-
-        return true; // Permite o envio do formulário
+    if (resposta !== respostaCorreta) {
+      alert("Resposta incorreta. Tente novamente!");
+      return false; // Impede o envio do formulário
     }
+
+    // Se a resposta for correta, seta o campo de replyTo com o email
+    var email = document.getElementById("email").value;
+    document.getElementById("replyTo").value = email;
+
+    // Envio do formulário via JavaScript (não redireciona a página)
+    enviarFormulario();
+    return false; // Impede o envio normal (redirecionamento)
+  }
+
+  // Função para enviar o formulário via fetch API
+  function enviarFormulario() {
+    var formData = new FormData(document.getElementById('form-contato'));
+
+    fetch('https://api.staticforms.xyz/submit', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())  // Processa a resposta do servidor
+    .then(data => {
+      console.log('Sucesso:', data);  // Exibe ou processa o retorno
+      // Aqui você pode adicionar o que deseja fazer após o envio (ex: mostrar uma mensagem de sucesso)
+    })
+    .catch(error => {
+      console.error('Erro:', error);  // Exibe erros no console caso ocorra algum problema
+    });
+  }
 </script>
 
-<!-- Script de Validação do Formulário -->
-<script>
-  document.getElementById('form-contato').addEventListener('submit', function(event) {
-    event.preventDefault();  // Impede o envio real do formulário
-
-    // Definindo o campo de e-mail de resposta para o e-mail do cliente
-    var email = document.getElementById('email').value;
-    document.getElementById('replyTo').value = email;
-
-    var resposta = document.getElementById('pergunta').value;
-
-    // Verifica se a resposta está correta
-    if (resposta != "11") {
-      alert("Resposta incorreta. Tente novamente.");
-    } else {
-      // Esconde o formulário e exibe a mensagem de agradecimento
-      document.getElementById('formulario').style.display = 'none';
-      document.getElementById('mensagem-agradecimento').style.display = 'block';
-
-      // Enviar o formulário para o StaticForms usando JavaScript (fetch API)
-      var formData = new FormData(document.getElementById('form-contato'));
-
-      fetch('https://api.staticforms.xyz/submit', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())  // Processa a resposta do servidor
-      .then(data => {
-        console.log('Sucesso:', data);  // Exibe ou processa o retorno
-      })
-      .catch(error => {
-        console.error('Erro:', error);  // Exibe erros no console caso ocorra algum problema
-      });
-    }
-  });
-</script>
-
-
-
-        </div>
-
-      </div>
-
-    </section><!-- /contato Section -->
 
   </main>
 
