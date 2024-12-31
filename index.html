@@ -641,6 +641,7 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
 </script>
 
 
+
   </main>
 
   <footer id="footer" class="footer dark-background">
@@ -670,29 +671,15 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
 
 
           <div class="col-lg-4 col-md-12 footer-newsletter">
-  <h4>Newsletter</h4>
-  <p>Quer receber dicas e notícias de marketing? Preencha seu email.</p>
-
-  <!-- Container para o Formulário do HubSpot -->
-  <div id="hubspot-form-container"></div>
-
-  <!-- Carregando o script do HubSpot -->
-  <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-
-  <script>
-    hbspt.forms.create({
-      portalId: "48635767", 
-      formId: "879b6afe-8b85-481f-85b6-21ab43300399", 
-      target: "#hubspot-form-container"  // O formulário será injetado neste contêiner
-    });
-  </script>
-
-  <!-- Mensagens de feedback -->
-  <div class="loading">Carregando...</div>
-  <div class="error-message"></div>
-  <div class="sent-message">Obrigado por se inscrever!</div>
-</div>
-
+            <h4>Newsletter</h4>
+            <p>Quer receber dicas e notícias de marketing? Preencha seu email.</p>
+            <form action="forms/newsletter.php" method="post" class="php-email-form">
+              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Inscrever"></div>
+              <div class="loading">Carregando</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Obrigado por se inscrever!</div>
+            </form>
+          </div>
 
         </div>
       </div>
