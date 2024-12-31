@@ -35,7 +35,7 @@
 	<!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/48635767.js"></script>
 <!-- End of HubSpot Embed Code -->
-
+	
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
@@ -592,7 +592,7 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
 
     if (resposta !== respostaCorreta) {
       alert("Resposta incorreta. Tente novamente!");
-      return false; // Impede o envio do formulário
+      return false; // Impede o envio do formulário se a resposta estiver errada
     }
 
     // Se a resposta for correta, seta o campo de replyTo com o email
@@ -601,7 +601,8 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
 
     // Envio do formulário via JavaScript (não redireciona a página)
     enviarFormulario();
-    return false; // Impede o envio normal (redirecionamento)
+
+    return false; // Impede o envio tradicional do formulário, pois já estamos enviando com JavaScript
   }
 
   // Função para enviar o formulário via fetch API
@@ -616,9 +617,11 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
     .then(data => {
       console.log('Sucesso:', data);  // Exibe ou processa o retorno
       // Aqui você pode adicionar o que deseja fazer após o envio (ex: mostrar uma mensagem de sucesso)
+      alert("Formulário enviado com sucesso!");
     })
     .catch(error => {
       console.error('Erro:', error);  // Exibe erros no console caso ocorra algum problema
+      alert("Erro ao enviar o formulário. Tente novamente mais tarde.");
     });
   }
 </script>
