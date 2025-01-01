@@ -670,16 +670,27 @@ Não hesito em sugerir seus serviços a outras empresas e agências de publicida
           </div>
 
 
-          <div class="col-lg-4 col-md-12 footer-newsletter">
-            <h4>Newsletter</h4>
-            <p>Quer receber dicas e notícias de marketing? Preencha seu email.</p>
-            <form action="forms/newsletter.php" method="post" class="php-email-form">
-              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Inscrever"></div>
-              <div class="loading">Carregando</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Obrigado por se inscrever!</div>
-            </form>
-          </div>
+        <div class="col-lg-4 col-md-12 footer-newsletter">
+  <h4>Newsletter</h4>
+  <p>Quer receber dicas e notícias de marketing? Preencha seu email.</p>
+  
+  <!-- Formulário modificado para usar o Formspree -->
+  <form action="https://formspree.io/f/xrbbypwe" method="POST" class="php-email-form">
+    <div class="newsletter-form">
+      <!-- Campo de E-mail -->
+      <input type="email" name="email" required placeholder="Seu e-mail" />
+      
+      <!-- Botão de envio -->
+      <input type="submit" value="Inscrever" />
+    </div>
+    
+    <!-- Mensagens de estado (loading, erro, sucesso) -->
+    <div class="loading">Carregando...</div>
+    <div class="error-message"></div>
+    <div class="sent-message">Obrigado por se inscrever!</div>
+  </form>
+</div>
+
 
         </div>
       </div>
