@@ -229,16 +229,31 @@
 </section>
 
 <!-- Modal para o botão de download -->
-<div id="downloadModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.9); padding: 20px; border-radius: 10px; color: white;">
-  <h3>Obrigado! Agora você pode baixar seu Ebook.</h3>
+<div id="downloadModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.8); padding: 30px; border-radius: 10px; color: white; text-align: center;">
+  <h3 style="margin-bottom: 20px;">Obrigado! Agora você pode baixar seu Ebook.</h3>
   <a href="https://raw.githubusercontent.com/anadomarketing/triscele/main/Ebook%20-%20As%2010%20Principais%20Tend%C3%AAncias%20de%20Marketing%20para%202025%20.pdf" 
      target="_blank" 
-     style="color: white; background-color: RoyalBlue; padding: 20px 30px; text-decoration: none; border-radius: 5px;">
+     style="color: white; background-color: RoyalBlue; padding: 20px 30px; text-decoration: none; border-radius: 5px; display: inline-block;">
     Baixar agora
   </a>
   <br><br>
-  <button onclick="closeModal()" style="background-color: red; color: white; padding: 5px 15px; border-radius: 5px; border: none;">Fechar</button>
+  <button onclick="closeModal()" style="background-color: red; color: white; padding: 10px 20px; border-radius: 5px; border: none; margin-top: 20px;">
+    Fechar
+  </button>
 </div>
+
+<script>
+  // Função para abrir o modal (por exemplo, após o clique em um botão)
+  function openModal() {
+    document.getElementById('downloadModal').style.display = 'block';
+  }
+
+  // Função para fechar o modal
+  function closeModal() {
+    document.getElementById('downloadModal').style.display = 'none';
+  }
+</script>
+
 
 <!-- End Download -->
 
