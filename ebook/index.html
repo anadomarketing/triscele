@@ -43,7 +43,6 @@
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/48635767.js"></script>
 <!-- End of HubSpot Embed Code -->
 
-
   	<!-- Start Header -->
 	<header id="mu-header" class="" role="banner">
 		<div class="container">
@@ -186,7 +185,6 @@
 
 
 <!-- Start Download -->
-
 <section id="mu-video-review">
   <div class="container">
     <div class="row">
@@ -201,7 +199,7 @@
 
           <div class="mu-contact-content">
             <!-- Formulário de Contato com estilo personalizado -->
-            <form id="form-contato" action="https://forms.hubspot.com/uploads/form/v2/48635767/f7f800ad-abc5-42a9-9037-f40346e1f3b0" method="post">
+            <form id="form-ebook" action="https://forms.hubspot.com/uploads/form/v2/48635767/d04fb53c-7c3e-4d72-88a0-68642ffb9b6d" method="post">
               <!-- Campo Honeypot para evitar bots -->
               <input type="text" name="honeypot" style="display: none;"> 
 
@@ -212,7 +210,7 @@
 
               <!-- Campo de telefone/WhatsApp com margem inferior -->
               <div class="mb-3">
-                <input type="tel" class="form-control" id="telefone" name="phone" placeholder="Seu WhatsApp" required style="background-color: white; border: 1px solid #ccc; border-radius: 15px; padding: 10px; margin-bottom: 15px;">
+                <input type="tel" class="form-control" id="telefone" name="phone" placeholder="Seu WhatsApp com DDD" required style="background-color: white; border: 1px solid #ccc; border-radius: 15px; padding: 10px; margin-bottom: 15px;">
               </div>
 
               <!-- Botão centralizado -->
@@ -230,6 +228,18 @@
   </div>
 </section>
 
+<!-- Modal para o botão de download -->
+<div id="downloadModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.7); padding: 20px; border-radius: 10px; color: white;">
+  <h3>Obrigado! Agora você pode baixar seu Ebook.</h3>
+  <a href="https://raw.githubusercontent.com/anadomarketing/triscele/main/Ebook%20-%20As%2010%20Principais%20Tend%C3%AAncias%20de%20Marketing%20para%202025%20.pdf" 
+     target="_blank" 
+     style="color: white; background-color: RoyalBlue; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+    Clique aqui para baixar o Ebook
+  </a>
+  <br><br>
+  <button onclick="closeModal()" style="background-color: red; color: white; padding: 5px 15px; border-radius: 5px; border: none;">Fechar</button>
+</div>
+
 <!-- End Download -->
 
 <script>
@@ -238,22 +248,33 @@
 
     var nome = document.getElementById('nome').value.trim();
     var telefone = document.getElementById('telefone').value.trim();
-    var telefoneRegex = /^\d{2}\d{8,9}$/; // Validação para DDD e número (8 ou 9 dígitos)
+    
+    // Expressão regular para aceitar DDD e número de telefone com vários formatos
+    var telefoneRegex = /^(?:\+55\s?)?(\(?\d{2}\)?\s?)\d{5}[-\s]?\d{4}$/;
 
-    if (!nome) {
-      alert('Por favor, preencha o seu nome.');
+    // Expressão regular para validar o nome (aceita letras e espaços)
+    var nomeRegex = /^[a-zA-ZÀ-ÿ\s]+$/;
+
+    if (!nome || !nomeRegex.test(nome)) {
+      alert('Por favor, insira um nome válido (com ou sem sobrenome).');
       return;
     }
 
     if (!telefone || !telefoneRegex.test(telefone)) {
-      alert('Por favor, insira um número de telefone válido com DDD e número (ex: 11999999999).');
+      alert('Por favor, insira um número de telefone válido com DDD (ex: (11) 99999-9999 ou 11999999999).');
       return;
     }
 
+    // Normalizando o telefone, removendo parênteses, espaços e traços
+    telefone = telefone.replace(/\D/g, ''); // Remove tudo que não for número
+    
     // Envia os dados para o HubSpot
     var form = this;
     var formAction = form.action;
     var formData = new FormData(form);
+
+    // Adiciona o telefone normalizado ao FormData
+    formData.set('phone', telefone);
 
     // Envia a requisição usando fetch para HubSpot
     fetch(formAction, {
@@ -262,8 +283,8 @@
     })
     .then(response => {
       if (response.ok) {
-        // Após enviar os dados com sucesso, redireciona para o PDF
-        window.location.href = 'https://raw.githubusercontent.com/anadomarketing/triscele/main/Ebook%20-%20As%2010%20Principais%20Tend%C3%AAncias%20de%20Marketing%20para%202025%20.pdf';
+        // Após enviar os dados com sucesso, exibe o modal
+        showModal();
       } else {
         alert('Ocorreu um erro ao enviar o formulário. Tente novamente.');
       }
@@ -272,6 +293,16 @@
       alert('Erro na requisição: ' + error);
     });
   });
+
+  // Função para exibir o modal
+  function showModal() {
+    document.getElementById('downloadModal').style.display = 'block';
+  }
+
+  // Função para fechar o modal
+  function closeModal() {
+    document.getElementById('downloadModal').style.display = 'none';
+  }
 </script>
 
 
