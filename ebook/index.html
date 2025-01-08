@@ -284,7 +284,8 @@
     .then(response => {
       if (response.ok) {
         // Após enviar os dados com sucesso, exibe o modal
-        showModal();
+        console.log('Formulário enviado com sucesso');
+        showModal(); // Exibe o modal
       } else {
         alert('Ocorreu um erro ao enviar o formulário. Tente novamente.');
       }
@@ -296,7 +297,9 @@
 
   // Função para exibir o modal
   function showModal() {
-    document.getElementById('downloadModal').style.display = 'block';
+    console.log('Exibindo o modal');
+    var modal = document.getElementById('downloadModal');
+    modal.style.display = 'block';
   }
 
   // Função para fechar o modal
@@ -304,6 +307,7 @@
     document.getElementById('downloadModal').style.display = 'none';
   }
 </script>
+
 
 
 
