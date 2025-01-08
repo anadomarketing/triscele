@@ -234,7 +234,7 @@
 
 <script>
   document.getElementById('form-contato').addEventListener('submit', function(event) {
-    event.preventDefault();
+    event.preventDefault();  // Previne o envio padrão do formulário.
 
     var nome = document.getElementById('nome').value.trim();
     var telefone = document.getElementById('telefone').value.trim();
@@ -251,12 +251,29 @@
     }
 
     // Envia os dados para o HubSpot
-    this.submit();
+    var form = this;
+    var formAction = form.action;
+    var formData = new FormData(form);
 
-    // Após enviar os dados, redireciona o usuário para o PDF
-    window.location.href = 'https://raw.githubusercontent.com/anadomarketing/triscele/main/Ebook%20-%20As%2010%20Principais%20Tend%C3%AAncias%20de%20Marketing%20para%202025%20.pdf';
+    // Envia a requisição usando fetch para HubSpot
+    fetch(formAction, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        // Após enviar os dados com sucesso, redireciona para o PDF
+        window.location.href = 'https://raw.githubusercontent.com/anadomarketing/triscele/main/Ebook%20-%20As%2010%20Principais%20Tend%C3%AAncias%20de%20Marketing%20para%202025%20.pdf';
+      } else {
+        alert('Ocorreu um erro ao enviar o formulário. Tente novamente.');
+      }
+    })
+    .catch(error => {
+      alert('Erro na requisição: ' + error);
+    });
   });
 </script>
+
 
 
 
