@@ -184,14 +184,13 @@
 		</section>
 		<!-- End Video Review -->
 		
-		<!-- Start Download  -->
-		
-		<section id="mu-video-review">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="mu-video-review-area">
+	<!-- Start Download -->
 
+<section id="mu-video-review">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mu-video-review-area">
 
           <div class="mu-heading-area">
             <h2 class="mu-heading-title">Baixe agora o Ebook</h2>
@@ -199,18 +198,22 @@
             <p>Preencha as informações abaixo para liberar o download do seu eBook gratuito.</p>
           </div>
 
-          <div class="mu-contact-content">
-            <form id="ebook-form" class="mu-contact-form">
-              <div class="form-group">
-                <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome" required style="background-color: white;">
-              </div>
-              <div class="form-group">
-                <input type="tel" class="form-control" id="whatsapp" name="whatsapp" placeholder="Seu WhatsApp" required style="background-color: white;">
-              </div>
+          <!-- Formulário HubSpot -->
+          <div id="hubspot-form-container"></div>
 
-              <button type="submit" id="submit-btn" class="mu-send-msg-btn" style="background-color: white; color: RoyalBlue; border: 1px solid #ccc;"><span>BAIXAR</span></button>
-            </form>
-          </div>
+          <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+          <script>
+            hbspt.forms.create({
+              portalId: "48635767",  // ID do seu portal HubSpot
+              formId: "c05e14c7-3ffa-4bfd-9b38-5beed125537c",  // ID do seu formulário HubSpot
+              target: "#hubspot-form-container",  // Onde o formulário será exibido
+              onFormSubmit: function() {
+                // Redirecionar após o envio do formulário para o PDF
+                window.location.href = 'https://github.com/anadomarketing/triscele/raw/main/Ebook%20-%20As%2010%20Principais%20Tend%C3%AAncias%20de%20Marketing%20para%202025%20.pdf';
+              }
+            });
+          </script>
+          <!-- Fim Formulário HubSpot -->
 
         </div>
       </div>
@@ -218,31 +221,8 @@
   </div>
 </section>
 
-<script>
-  document.getElementById('ebook-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+<!-- End Download -->
 
-    var nome = document.getElementById('nome').value.trim();
-    var whatsapp = document.getElementById('whatsapp').value.trim();
-    var whatsappRegex = /^\d{2}\d{8,9}$/; // Validação para DDD e número (8 ou 9 dígitos)
-
-    if (!nome) {
-      alert('Por favor, preencha o seu nome.');
-      return;
-    }
-
-    if (!whatsapp || !whatsappRegex.test(whatsapp)) {
-      alert('Por favor, insira um número de WhatsApp válido com DDD e número (ex: 11999999999).');
-      return;
-    }
-
-    window.location.href = 'https://github.com/anadomarketing/triscele/raw/main/Ebook%20-%20As%2010%20Principais%20Tend%C3%AAncias%20de%20Marketing%20para%202025%20.pdf
-';
-  });
-</script>
-
-		
-		<!-- End Download  -->
 		
 		<!-- Start Author -->
 		<section id="mu-author">
