@@ -220,37 +220,17 @@
   </div>
 </section>
 
-<!-- Scripts -->
+<!-- HubSpot Embed Form Script -->
 <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
 <script>
-  document.getElementById('ebook-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    var nome = document.getElementById('nome').value.trim();
-    var whatsapp = document.getElementById('whatsapp').value.trim();
-    var whatsappRegex = /^\d{2}\d{8,9}$/; // Validação para DDD e número (8 ou 9 dígitos)
-
-    if (!nome) {
-      alert('Por favor, preencha o seu nome.');
-      return;
+  hbspt.forms.create({
+    portalId: "48635767",  // ID do seu portal HubSpot
+    formId: "c05e14c7-3ffa-4bfd-9b38-5beed125537c",  // ID do seu formulário HubSpot
+    target: "#ebook-form",  // Onde o formulário será exibido (mesmo local, dentro do seu modelo)
+    onFormSubmit: function() {
+      // Redirecionar para o PDF após o envio
+      window.location.href = 'https://github.com/anadomarketing/triscele/raw/main/Ebook%20-%20As%2010%20Principais%20Tend%C3%AAncias%20de%20Marketing%20para%202025%20.pdf';
     }
-
-    if (!whatsapp || !whatsappRegex.test(whatsapp)) {
-      alert('Por favor, insira um número de WhatsApp válido com DDD e número (ex: 11999999999).');
-      return;
-    }
-
-    // Enviar dados para o HubSpot via API (substituindo o seu modelo de formulário)
-    hbspt.forms.create({
-      portalId: "48635767",  // ID do seu portal HubSpot
-      formId: "c05e14c7-3ffa-4bfd-9b38-5beed125537c",  // ID do seu formulário HubSpot
-      target: "#hubspot-form-container",  // Aqui o formulário será exibido, mas no seu caso ele já será integrado diretamente
-      onFormSubmit: function() {
-        // Redirecionar após o envio do formulário para o PDF
-        window.location.href = 'https://github.com/anadomarketing/triscele/raw/main/Ebook%20-%20As%2010%20Principais%20Tend%C3%AAncias%20de%20Marketing%20para%202025%20.pdf';
-      }
-    });
-
   });
 </script>
 
