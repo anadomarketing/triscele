@@ -39,7 +39,11 @@
 
   <body>
 
-   	
+   	 <!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/48635767.js"></script>
+<!-- End of HubSpot Embed Code -->
+
+
   	<!-- Start Header -->
 	<header id="mu-header" class="" role="banner">
 		<div class="container">
@@ -179,7 +183,8 @@
 			</div>
 		</section>
 		<!-- End Video Review -->
-		
+
+
 <!-- Start Download -->
 
 <section id="mu-video-review">
@@ -195,27 +200,27 @@
           </div>
 
           <div class="mu-contact-content">
-            <!-- Formulário de Contato -->
-            <form id="formulario-ebook" action="https://forms.hubspot.com/uploads/form/v2/48635767/c05e14c7-3ffa-4bfd-9b38-5beed125537c" method="post">
+            <!-- Formulário de Contato com estilo personalizado -->
+            <form id="form-contato" action="https://forms.hubspot.com/uploads/form/v2/48635767/f7f800ad-abc5-42a9-9037-f40346e1f3b0" method="post">
               <!-- Campo Honeypot para evitar bots -->
               <input type="text" name="honeypot" style="display: none;"> 
 
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="mb-3">
-                    <input type="text" class="form-control" id="nome" name="name" placeholder="Nome" required style="background-color: white;">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="mb-3">
-                    <input type="tel" class="form-control" id="telefone" name="phone" placeholder="Telefone/Whatsapp" required style="background-color: white;">
-                  </div>
-                </div>
+              <!-- Campo de nome com margem inferior -->
+              <div class="mb-3">
+                <input type="text" class="form-control" id="nome" name="name" placeholder="Seu nome" required style="background-color: white; border: 1px solid #ccc; border-radius: 15px; padding: 10px; margin-bottom: 15px;">
               </div>
 
-              <button type="submit" class="mu-send-msg-btn" style="background-color: white; color: RoyalBlue; border: 1px solid #ccc;">
-                <span>BAIXAR</span>
-              </button>
+              <!-- Campo de telefone/WhatsApp com margem inferior -->
+              <div class="mb-3">
+                <input type="tel" class="form-control" id="telefone" name="phone" placeholder="Seu WhatsApp" required style="background-color: white; border: 1px solid #ccc; border-radius: 15px; padding: 10px; margin-bottom: 15px;">
+              </div>
+
+              <!-- Botão centralizado -->
+              <div class="text-center">
+                <button type="submit" class="mu-send-msg-btn" style="background-color: RoyalBlue; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 15px;">
+                  <span>BAIXAR</span>
+                </button>
+              </div>
             </form>
           </div>
 
@@ -224,6 +229,8 @@
     </div>
   </div>
 </section>
+
+<!-- End Download -->
 
 <script>
   document.getElementById('form-contato').addEventListener('submit', function(event) {
@@ -251,7 +258,7 @@
   });
 </script>
 
-		<!-- End Download -->
+
 
 		<!-- Start Author -->
 		<section id="mu-author">
