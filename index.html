@@ -1193,14 +1193,22 @@
       if(data.get('_honey')) return; // robô preencheu o campo oculto
       if(!data.get('_replyto')) data.append('_replyto', data.get('email'));
       var btn=form.querySelector('button[type="submit"]'); btn.disabled=true; btn.textContent='Enviando...';
-      fetch(form.action.replace('formsubmit.co/','formsubmit.co/ajax/'), { method:'POST', headers:{'Accept':'application/json'}, body:data })
-        .then(function(r){ return r.json().then(function(j){ if(!r.ok || String(j.success)!=='true') throw new Error(j.message||'Falha no envio'); }); })
+      var payload={}; data.forEach(function(v,k){ payload[k]=v; });
+      fetch(form.action.replace('formsubmit.co/','formsubmit.co/ajax/'), { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(payload) })
+        .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if(!r.ok || String(j.success)==='false'){ var e=new Error(j.message||('HTTP '+r.status)); e.fsMessage=j.message; throw e; } }); })
         .then(function(){
-          err.hidden=true; ok.hidden=false; form.reset();
-          if(window.grecaptcha) grecaptcha.reset();
-          window.dataLayer.push({event:'generate_lead', form_id:'form-contato'});
+          // envio confirmado: nada daqui para baixo pode transformar sucesso em erro
+          err.hidden=true; ok.hidden=false;
+          try { form.reset(); } catch(e){}
+          try { if(window.grecaptcha && typeof grecaptcha.reset==='function') grecaptcha.reset(); } catch(e){}
+          try { window.dataLayer.push({event:'generate_lead', form_id:'form-contato'}); } catch(e){}
+        }, function(error){ throw error; })
+        .catch(function(error){
+          console.error('Erro no envio:', error);
+          var m=error.fsMessage||'';
+          if(/activat/i.test(m)){ showError('Formulário aguardando ativação. Verifique o e-mail de ativação do FormSubmit.'); }
+          else { showError('Ocorreu um problema ao enviar o formulário. Tente novamente ou fale pelo WhatsApp.' + (m ? ' ('+m+')' : '')); }
         })
-        .catch(function(error){ console.error('Erro:', error); showError('Ocorreu um problema ao enviar o formulário. Tente novamente ou fale pelo WhatsApp.'); })
         .finally(function(){ btn.disabled=false; btn.textContent='Enviar'; });
     });
   })();
