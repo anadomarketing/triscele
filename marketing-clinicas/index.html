@@ -69,7 +69,7 @@
       "@id": "https://triscelemarketing.com.br/marketing-clinicas/#servico",
       "name": "Marketing digital e tráfego pago para clínicas de saúde e estética",
       "serviceType": "Marketing digital e tráfego pago para clínicas de saúde e estética",
-      "description": "A Tríscele cuida do marketing digital de clínicas de estética, clínicas médicas, consultórios e clínicas odontológicas. O objetivo é transformar anúncios em agendamentos e agendamentos em pacientes atendidos. Já atendemos unidades da rede de depilação a laser Não+Pelo, a Clínica Define, médicos, dentistas e outros profissionais da saúde e da estética. Combinamos tráfego pago, Google Meu Negócio, landing pages por procedimento e atendimento no WhatsApp com Inteligência Artificial, sempre respeitando as normas de publicidade dos conselhos profissionais.",
+      "description": "A Tríscele cuida do marketing digital de clínicas de estética, clínicas médicas, consultórios e clínicas odontológicas. O objetivo é transformar anúncios em agendamentos e agendamentos em pacientes atendidos. Já atendemos médicos, dentistas, clínicas de estética, consultórios e redes de franquias de saúde e beleza. Combinamos tráfego pago, Google Meu Negócio, landing pages por procedimento e atendimento no WhatsApp com Inteligência Artificial, sempre respeitando as normas de publicidade dos conselhos profissionais.",
       "provider": {
         "@id": "https://triscelemarketing.com.br/#organizacao"
       },
@@ -149,7 +149,7 @@
           "name": "Vocês atendem franquias e redes de clínicas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. Já atendemos unidades da rede Não+Pelo. Organizamos campanhas, verbas e relatórios por unidade, respeitando o padrão da marca."
+            "text": "Sim. Já atendemos redes de franquias de saúde e beleza. Organizamos campanhas, verbas e relatórios por unidade, respeitando o padrão da marca."
           }
         },
         {
@@ -413,11 +413,32 @@
     .footer-bottom{padding-top:24px;font-size:14px}
     @media (max-width: 980px){ .footer-top{grid-template-columns:1fr 1fr} }
     @media (max-width: 560px){ .footer-top{grid-template-columns:1fr} }
-    .segments{margin-top:36px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
-    .segments h3{font-size:15px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-    .segments ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
-    .segments a{display:inline-flex;padding:9px 18px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-family:var(--f-display);font-weight:500;font-size:15px;color:var(--ink);transition:border-color .2s,color .2s,background .2s}
-    .segments a:hover{border-color:var(--teal);color:var(--teal-deep);background:rgba(14,162,189,.06)}
+    /* ===== Soluções por segmento ===== */
+    .segs{background:var(--paper)}
+    .segs-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px;margin-bottom:clamp(28px,4vw,44px)}
+    .segs-head .section-head{margin-bottom:0}
+    .segs-head .section-head p{color:var(--muted)}
+    .segs-all{font-family:var(--f-display);font-weight:600;font-size:15px;color:var(--teal-deep);text-decoration:none}
+    .segs-all:hover{text-decoration:underline}
+    .seg-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+    .seg-card{position:relative;display:block;aspect-ratio:3/4.3;border-radius:18px;overflow:hidden;color:#fff;text-decoration:none;isolation:isolate;box-shadow:0 18px 40px -28px rgba(14,18,20,.7);transition:transform .3s ease,box-shadow .3s ease}
+    .seg-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s ease}
+    .seg-card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,18,20,.05) 25%,rgba(14,18,20,.55) 55%,rgba(14,18,20,.95) 100%);transition:background .3s}
+    .seg-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px -24px rgba(8,122,143,.55)}
+    .seg-card:hover img{transform:scale(1.06)}
+    .seg-card:hover::before{background:linear-gradient(180deg,rgba(8,122,143,.15) 20%,rgba(10,40,48,.7) 55%,rgba(14,18,20,.96) 100%)}
+    .seg-body{position:absolute;left:0;right:0;bottom:0;padding:20px 18px;display:grid;gap:6px}
+    .seg-tag{display:inline-flex;justify-self:start;align-items:center;gap:6px;font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(14,162,189,.9);padding:5px 10px;border-radius:999px}
+    .seg-tag svg{width:14px;height:14px}
+    .seg-title{font-family:var(--f-display);font-weight:700;font-size:19px;line-height:1.2}
+    .seg-more{font-size:14px;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:6px}
+    .seg-more span{transition:transform .25s}
+    .seg-card:hover .seg-more span{transform:translateX(4px)}
+    @media (max-width: 1060px){
+      .seg-scroller{overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-24px;padding:4px 24px 14px;scrollbar-width:thin}
+      .seg-grid{grid-template-columns:repeat(5,minmax(230px,1fr));width:max-content;min-width:100%}
+      .seg-grid li{scroll-snap-align:start}
+    }
 
     /* botão flutuante do WhatsApp */
     .wa-float{position:fixed;right:20px;bottom:20px;z-index:40;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.45)}
@@ -597,6 +618,7 @@
     .invest-line a{color:var(--teal)}
     .form-note{font-size:13px;color:var(--muted);text-align:center}
 
+    .wl-note{margin-top:28px;max-width:780px;padding:14px 18px;border-left:3px solid var(--teal);background:rgba(0,0,0,.04);border-radius:0 10px 10px 0;font-size:15px;color:var(--muted)}
     #case{background:var(--paper)}
     /* Outros segmentos */
     .related ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px}
@@ -655,7 +677,7 @@
             <a class="btn btn-ghost" href="#contato">Pedir diagnóstico</a>
           </div>
           <ul class="trust">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Experiência com a rede Não+Pelo e a Clínica Define</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Experiência com clínicas de saúde e estética</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Médicos, dentistas e estética</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Comunicação alinhada ao CFM e ao CFO</li>
             
@@ -674,7 +696,7 @@
     <section class="proof" aria-label="Diferenciais">
       <div class="wrap">
         <ul>
-          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></span>Rede Não+Pelo e Clínica Define</li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></span>Médicos, dentistas e clínicas de estética</li>
           <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></span>Google, Meta e TikTok Ads</li>
           <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></span>WhatsApp com IA 24 horas</li>
           <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"/></svg></span>Campanhas por unidade para franquias</li>
@@ -692,7 +714,7 @@
         </div>
         <div style="max-width:780px;display:grid;gap:14px;color:var(--muted);font-size:18px">
           <p>A Tríscele cuida do marketing digital de clínicas de estética, clínicas médicas, consultórios e clínicas odontológicas. O objetivo é transformar anúncios em agendamentos e agendamentos em pacientes atendidos.</p>
-          <p>Já atendemos unidades da rede de depilação a laser Não+Pelo, a Clínica Define, médicos, dentistas e outros profissionais da saúde e da estética. Combinamos tráfego pago, Google Meu Negócio, landing pages por procedimento e atendimento no WhatsApp com Inteligência Artificial, sempre respeitando as normas de publicidade dos conselhos profissionais.</p>
+          <p>Já atendemos médicos, dentistas, clínicas de estética, consultórios e redes de franquias de saúde e beleza. Combinamos tráfego pago, Google Meu Negócio, landing pages por procedimento e atendimento no WhatsApp com Inteligência Artificial, sempre respeitando as normas de publicidade dos conselhos profissionais.</p>
           
         </div>
       </div>
@@ -814,7 +836,7 @@
         <div class="section-head">
           <span class="label">Por que a Tríscele</span>
           <h2 id="titulo-porque">Experiência real em saúde e estética</h2>
-          <p style="color:var(--muted)">Já conduzimos campanhas para unidades da rede Não+Pelo, para a Clínica Define e para médicos, dentistas e outros profissionais da saúde e da estética.</p>
+          <p style="color:var(--muted)">Já conduzimos campanhas para médicos, dentistas, clínicas de estética, consultórios e redes de franquias de saúde e beleza.</p>
         </div>
         <div class="why-list">
           <div class="why-item reveal"><h3>Ética em primeiro lugar</h3><p>Comunicação alinhada às normas do CFM e do CFO e às políticas de anúncios de saúde do Google e da Meta.</p></div>
@@ -822,6 +844,7 @@
           <div class="why-item reveal"><h3>Foco em paciente, não em clique</h3><p>Tudo é medido até o agendamento, para a verba ir para o que traz resultado.</p></div>
           
         </div>
+        
       </div>
     </section>
 
@@ -880,7 +903,7 @@
           </details>
           <details>
             <summary>Vocês atendem franquias e redes de clínicas?</summary>
-            <p>Sim. Já atendemos unidades da rede Não+Pelo. Organizamos campanhas, verbas e relatórios por unidade, respeitando o padrão da marca.</p>
+            <p>Sim. Já atendemos redes de franquias de saúde e beleza. Organizamos campanhas, verbas e relatórios por unidade, respeitando o padrão da marca.</p>
           </details>
           <details>
             <summary>Atendem dentistas e médicos com consultório próprio?</summary>
