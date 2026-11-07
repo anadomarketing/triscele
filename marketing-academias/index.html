@@ -548,12 +548,12 @@
     /* Dores */
     .pains-sec{background:var(--paper)}
     .pains{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .pain{display:grid;grid-template-columns:36px 1fr;gap:14px;border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--white);transition:transform .25s,box-shadow .25s,border-color .25s}
+    .pain{display:grid;grid-template-columns:40px 1fr;gap:16px;border:1px solid var(--line-dark);border-radius:14px;padding:24px;background:var(--ink-2);transition:transform .25s,box-shadow .25s,border-color .25s}
     .pain:hover{transform:translateY(-3px);border-color:rgba(14,162,189,.5);box-shadow:0 14px 30px -20px rgba(8,122,143,.5)}
-    .pain .x{width:36px;height:36px;border-radius:50%;background:#FDECEC;color:#B42318;display:grid;place-items:center}
+    .pain .x{width:40px;height:40px;border-radius:12px;background:rgba(14,162,189,.16);color:var(--teal);display:grid;place-items:center}
     .pain .x svg{width:18px;height:18px}
-    .pain h3{font-size:18px;font-weight:600;margin-bottom:4px}
-    .pain p{color:var(--muted);font-size:16px}
+    .pain h3{font-size:18px;font-weight:600;margin-bottom:4px;color:#fff}
+    .pain p{color:rgba(255,255,255,.76);font-size:16px}
     .inline-cta{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;font-family:var(--f-display);font-weight:600;font-size:19px;color:var(--ink)}
     @media (max-width: 720px){ .pains{grid-template-columns:1fr} }
 
@@ -595,7 +595,7 @@
     /* Faixa de CTA */
     .cta-band{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding-block:clamp(64px,8vw,104px)}
     .cta-band .bg{position:absolute;inset:0}
-    .cta-band .bg img{width:100%;height:100%;object-fit:cover;object-position:72% 28%}
+    .cta-band .bg img{position:absolute;left:0;top:9%;width:100%;height:91%;object-fit:cover;object-position:72% 0%;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22%);mask-image:linear-gradient(to bottom,transparent 0,#000 22%)}
     .cta-band::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(14,18,20,.95) 0%,rgba(14,18,20,.84) 45%,rgba(14,18,20,.2) 100%)}
     .cta-band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--teal);z-index:2}
     .cta-band .wrap{position:relative;z-index:2;display:grid;gap:18px;justify-items:start}
@@ -700,12 +700,6 @@
             <a class="btn btn-primary js-wa" href="https://wa.me/5562994141488?text=Ol%C3%A1%21%20Vim%20da%20p%C3%A1gina%20de%20academias%20e%20quero%20mais%20matr%C3%ADculas%20para%20minha%20academia." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4.9 2.9.8 3.4.7.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg> Quero mais matrículas</a>
             <a class="btn btn-ghost" href="#contato">Pedir diagnóstico</a>
           </div>
-          <ul class="trust">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>No mercado fitness desde 2015</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Academias e redes em todo o Brasil</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Relatório de custo por matrícula</li>
-            
-          </ul>
         </div>
         
         <div class="hero-photo">
@@ -715,20 +709,6 @@
         
       </div>
     </section>
-
-    <!-- ===================== 2. FAIXA DE PROVAS ===================== -->
-    <section class="proof" aria-label="Diferenciais">
-      <div class="wrap">
-        <ul>
-          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></span>Especialista em fitness desde 2015</li>
-          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></span>Google, Meta e TikTok Ads</li>
-          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></span>WhatsApp com IA 24 horas</li>
-          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"/></svg></span>Campanhas por unidade para redes</li>
-          
-        </ul>
-      </div>
-    </section>
-
     <!-- ===================== 3. EM RESUMO (GEO) ===================== -->
     <section class="section" id="resumo" aria-labelledby="titulo-resumo" style="padding-block:clamp(56px,7vw,88px)">
       <div class="wrap">
@@ -865,7 +845,7 @@
             <span class="label">Por que a Tríscele</span>
             <h2 id="titulo-porque">Experiência real no mercado fitness</h2>
             <p style="color:var(--muted)">A Ana D&#x27;avilla, fundadora da Tríscele, trabalha com marketing para academias desde 2015, incluindo a Holus, primeira agência especializada no nicho fitness do Brasil, e campanhas para redes de academia.</p>
-            <div class="why-stats"><div><strong>2015</strong><span>no segmento fitness</span></div><div><strong>Holus</strong><span>1ª agência fitness do Brasil</span></div></div>
+            <div class="why-stats"><div><strong>2015</strong><span>no segmento fitness</span></div><div><strong>+30</strong><span>academias atendidas</span></div></div>
           </div>
           <div class="why-photo reveal"><img src="/assets/img/nichos/academias/academia-aluna-640.webp" srcset="/assets/img/nichos/academias/academia-aluna-640.webp 640w, /assets/img/nichos/academias/academia-aluna-1000.webp 1000w" sizes="(max-width: 900px) 100vw, 560px" alt="Aluna sorrindo amarrando o tênis em uma academia" width="1000" height="667" loading="lazy" decoding="async"></div>
         </div>
@@ -874,7 +854,6 @@
           <div class="why-item reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3>Pronto para redes</h3><p>Contas, verbas e metas separadas por unidade, com visão da rede inteira.</p></div>
           <div class="why-item reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01M9 16.5h6"/><circle cx="12" cy="3.5" r="1"/></svg></div><h3>Tecnologia a favor da recepção</h3><p>IA e automação para sua equipe falar só com quem quer fechar.</p></div>
         </div>
-        <p class="wl-note reveal">Os trabalhos com as empresas citadas nesta página foram realizados em white label: a Tríscele atuou nos bastidores, em parceria com agências e consultorias, sob a marca do parceiro.</p>
       </div>
     </section>
 
@@ -894,8 +873,8 @@
             <figcaption><img src="/assets/img/depoimentos/depoimentos-1.jpg" alt="Logo Studio Que" width="100" height="100" loading="lazy" decoding="async"><cite><strong>Carlos Eduardo</strong><span>Gerente de Negócios &amp; Studio Que</span></cite></figcaption>
           </figure>
           <figure class="quote reveal">
-            <blockquote><p>Trabalhar com a Tríscele foi excelente para nossa vidraçaria! Eles entenderam perfeitamente o que precisávamos e criaram uma identidade digital muito top e um site super moderno e fácil de navegar. Graças à ajuda da agência e, principalmente, da Ana, estamos recebendo contatos semanalmente no Google Meu Negócio! A equipe é super atenciosa e parceira. Recomendamos muito.</p></blockquote>
-            <figcaption><img src="/assets/img/depoimentos/depoimentos-6.jpg" alt="Logo Vidraçaria São Francisco" width="100" height="100" loading="lazy" decoding="async"><cite><strong>Edson Ramos</strong><span>Vidraçaria São Francisco</span></cite></figcaption>
+            <blockquote><p>Como sócio da New Comunicação, tenho o prazer de recomendar os serviços exemplares da Ana D'avilla como gestora de tráfego. Sua expertise e dedicação foram fundamentais para o sucesso de nossos projetos. Profissional dedicada, estudiosa e sempre prestativa. Não hesito em sugerir seus serviços a outras empresas e agências de publicidade em busca de resultados excepcionais.</p></blockquote>
+            <figcaption><img src="/assets/img/depoimentos/depoimentos-3.jpg" alt="Foto de José de Almeida Neto" width="100" height="100" loading="lazy" decoding="async"><cite><strong>José de Almeida Neto</strong><span>Sócio e Diretor Criativo da New Comunicação</span></cite></figcaption>
           </figure>
           <figure class="quote reveal">
             <blockquote><p>Uma das minhas maiores dores nesses 14 anos como empresário era achar uma profissional competente. Há 4 anos encontramos a Ana e tivemos uma parceria sólida e com entrega pontual, com resultado e de qualidade nos serviços.</p></blockquote>
@@ -1097,7 +1076,6 @@
           <ul>
             <li>Goiânia - Brasil</li>
             <li><a class="js-wa" href="https://wa.me/5562994141488?text=Ol%C3%A1%21%20Vim%20da%20p%C3%A1gina%20de%20academias%20e%20quero%20mais%20matr%C3%ADculas%20para%20minha%20academia." target="_blank" rel="noopener">+55 62 9 9414-1488</a></li>
-            <li><a href="mailto:contato@triscelecomunicacao.com.br">contato@triscelecomunicacao.com.br</a></li>
           </ul>
         </div>
       </div>
