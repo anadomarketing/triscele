@@ -540,32 +540,35 @@
     /* Dores */
     .pains-sec{background:var(--paper)}
     .pains{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .pain{display:grid;grid-template-columns:36px 1fr;gap:14px;border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--white);transition:transform .25s,box-shadow .25s,border-color .25s}
+    .pain{display:grid;grid-template-columns:40px 1fr;gap:16px;border:1px solid var(--line-dark);border-radius:14px;padding:24px;background:var(--ink-2);transition:transform .25s,box-shadow .25s,border-color .25s}
     .pain:hover{transform:translateY(-3px);border-color:rgba(14,162,189,.5);box-shadow:0 14px 30px -20px rgba(8,122,143,.5)}
-    .pain .x{width:36px;height:36px;border-radius:50%;background:#FDECEC;color:#B42318;display:grid;place-items:center}
+    .pain .x{width:40px;height:40px;border-radius:12px;background:rgba(14,162,189,.16);color:var(--teal);display:grid;place-items:center}
     .pain .x svg{width:18px;height:18px}
-    .pain h3{font-size:18px;font-weight:600;margin-bottom:4px}
-    .pain p{color:var(--muted);font-size:16px}
+    .pain h3{font-size:18px;font-weight:600;margin-bottom:4px;color:#fff}
+    .pain p{color:rgba(255,255,255,.76);font-size:16px}
     .inline-cta{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;font-family:var(--f-display);font-weight:600;font-size:19px;color:var(--ink)}
     @media (max-width: 720px){ .pains{grid-template-columns:1fr} }
 
-    /* Soluções com imagem (zig-zag) */
-    .features{display:grid;gap:clamp(56px,7vw,96px)}
-    .feature{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
-    .feature:nth-child(even) .feature-media{order:2}
-    .feature-media{position:relative}
-    .feature-media img{width:100%;border-radius:18px;aspect-ratio:4/3;object-fit:cover;transition:transform .6s ease}
-    .feature-media.cutout img{aspect-ratio:auto;object-fit:contain;border-radius:0;max-height:440px;width:auto;margin-inline:auto}
-    .feature-media.cutout img{-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent);mask-image:linear-gradient(to bottom,#000 78%,transparent)}
-    .feature-media.cutout{background:radial-gradient(closest-side,rgba(14,162,189,.14),transparent);border-radius:24px}
-    .feature-media:hover img{transform:scale(1.02)}
-    .feature .tag{display:inline-flex;font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:10px}
-    .feature h3{font-size:clamp(24px,2.6vw,32px);font-weight:700;margin-bottom:12px}
-    .feature p{color:var(--muted);font-size:17px}
-    .feature ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
-    .feature li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:16px}
+    /* Soluções em cards */
+    .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch}
+    .feature{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s}
+    .feature:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(8,122,143,.5)}
+    .feature-media{position:relative;overflow:hidden}
+    .feature-media img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;transition:transform .6s ease}
+    .feature-media.cutout{background:radial-gradient(closest-side,rgba(14,162,189,.22),rgba(14,162,189,.04));border-bottom:1px solid var(--line)}
+    .feature-media.cutout img{object-fit:contain;padding-top:10px;-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent);mask-image:linear-gradient(to bottom,#000 80%,transparent)}
+    .feature:hover .feature-media img{transform:scale(1.03)}
+    .feature>div:not(.feature-media){padding:26px 28px 30px;display:flex;flex-direction:column;flex:1}
+    .feature .tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:14px}
+    .feature .tag i{width:40px;height:40px;border-radius:12px;background:rgba(14,162,189,.12);display:grid;place-items:center;flex:none}
+    .feature .tag i svg{width:22px;height:22px}
+    .feature h3{font-size:clamp(20px,1.9vw,23px);font-weight:700;margin-bottom:10px;line-height:1.25}
+    .feature p{color:var(--muted);font-size:16px}
+    .feature ul{list-style:none;margin:18px 0 0;padding:18px 0 0;border-top:1px solid var(--line);display:grid;gap:10px}
+    .feature li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15.5px}
     .feature li svg{width:20px;height:20px;color:var(--teal);margin-top:3px}
-    @media (max-width: 860px){ .feature{grid-template-columns:1fr} .feature:nth-child(even) .feature-media{order:0} }
+    @media (max-width: 1020px){ .features{grid-template-columns:1fr 1fr} .feature:last-child{grid-column:1/-1} }
+    @media (max-width: 680px){ .features{grid-template-columns:1fr} }
 
     /* Extras */
     .extras{margin-top:clamp(56px,7vw,88px)}
@@ -582,19 +585,41 @@
     @media (max-width: 520px){ .steps-grid{grid-template-columns:1fr} }
 
     /* Faixa de CTA */
-    .cta-band{background:linear-gradient(120deg,#0B3E48 0%,var(--ink) 70%);color:#fff;padding-block:clamp(48px,6vw,72px)}
-    .cta-band .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
-    .cta-band h2{color:#fff;font-size:clamp(26px,3.2vw,38px);font-weight:700;max-width:640px}
-    .cta-band p{color:rgba(255,255,255,.78);margin-top:8px;max-width:560px}
+    .cta-band{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding-block:clamp(64px,8vw,104px)}
+    .cta-band .bg{position:absolute;inset:0}
+    .cta-band .bg img{width:100%;height:100%;object-fit:cover;object-position:80% 30%}
+    .cta-band::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(14,18,20,.95) 0%,rgba(14,18,20,.84) 45%,rgba(14,18,20,.2) 100%)}
+    .cta-band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--teal);z-index:2}
+    .cta-band .wrap{position:relative;z-index:2;display:grid;gap:18px;justify-items:start}
+    .cta-band h2{color:#fff;font-size:clamp(28px,3.6vw,42px);font-weight:700;max-width:620px}
+    .cta-band p{color:rgba(255,255,255,.82);margin-top:0;max-width:540px;font-size:18px}
+    .cta-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
+    .cta-band .invest-line{font-size:15px;color:rgba(255,255,255,.7)}
+    .cta-band .invest-line a{color:var(--teal)}
+    .cta-band .label{color:var(--teal)}
+    @media (max-width: 760px){ .cta-band::before{background:linear-gradient(180deg,rgba(14,18,20,.9),rgba(14,18,20,.82))} }
 
     /* Por que a Tríscele */
-    .why .wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,5vw,72px);align-items:start}
-    .why-list{display:grid;gap:14px}
-    .why-item{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px 22px;transition:border-color .25s}
-    .why-item:hover{border-color:var(--teal)}
-    .why-item h3{font-size:18px;font-weight:600;margin-bottom:4px}
+    .why .wrap{display:block}
+    .why-top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center;margin-bottom:clamp(36px,5vw,56px)}
+    .why-top.solo{grid-template-columns:1fr}
+    .why-top .section-head{margin-bottom:0;max-width:none}
+    .why-stats{display:flex;gap:28px;margin-top:6px}
+    .why-stats div{display:grid;gap:2px}
+    .why-stats div+div{border-left:1px solid var(--line);padding-left:28px}
+    .why-stats strong{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,3vw,34px);color:var(--teal-deep);line-height:1.1}
+    .why-stats span{font-size:14px;color:var(--muted)}
+    .why-photo{position:relative;border-radius:20px;overflow:hidden;background:var(--ink)}
+    .why-photo img{width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;object-position:40% 30%;display:block}
+    .why-photo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--teal)}
+    .why-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+    .why-item{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;display:grid;gap:12px;align-content:start;transition:border-color .25s,transform .25s}
+    .why-item:hover{border-color:var(--teal);transform:translateY(-3px)}
+    .why-item .ico{width:56px;height:56px;border-radius:14px;background:var(--teal);color:#06242B;display:grid;place-items:center;margin-bottom:6px}
+    .why-item .ico svg{width:28px;height:28px}
+    .why-item h3{font-size:20px;font-weight:600;line-height:1.3}
     .why-item p{color:var(--muted);font-size:16px}
-    @media (max-width: 900px){ .why .wrap{grid-template-columns:1fr} }
+    @media (max-width: 900px){ .why-top{grid-template-columns:1fr} .why-list{grid-template-columns:1fr} .why-photo img{aspect-ratio:16/10} }
 
     /* Próximos passos do formulário */
     .next-steps{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:14px;counter-reset:ns}
@@ -741,7 +766,7 @@
           <article class="feature reveal">
             <div class="feature-media"><img src="/assets/img/marketing/equipe-redes-sociais-640.webp" srcset="/assets/img/marketing/equipe-redes-sociais-640.webp 640w, /assets/img/marketing/equipe-redes-sociais-1000.webp 1000w" sizes="(max-width: 860px) 100vw, 560px" alt="Profissionais de marketing analisando resultados de redes sociais no celular" width="1000" height="750" loading="lazy" decoding="async"></div>
             <div>
-              <span class="tag">Anúncios locais</span>
+              <span class="tag"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></i>Anúncios locais</span>
               <h3>Anúncios na hora da fome, para quem está perto</h3>
               <p>Campanhas no Instagram, no Facebook, no TikTok e no Google segmentadas pelo raio de entrega e programadas para os horários de maior procura.</p>
               <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg><span>Segmentação por raio de entrega ou do salão</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg><span>Anúncios no almoço, no jantar e no fim de semana</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg><span>Ofertas para dias de menor movimento</span></li></ul>
@@ -750,7 +775,7 @@
           <article class="feature reveal">
             <div class="feature-media"><img src="/assets/img/marketing/equipe-ia-640.webp" srcset="/assets/img/marketing/equipe-ia-640.webp 640w, /assets/img/marketing/equipe-ia-1000.webp 1000w" sizes="(max-width: 860px) 100vw, 560px" alt="Equipe analisando uma automação com Inteligência Artificial no computador" width="1000" height="750" loading="lazy" decoding="async"></div>
             <div>
-              <span class="tag">Pedidos com IA</span>
+              <span class="tag"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></i>Pedidos com IA</span>
               <h3>Pedido anotado, até no horário de pico</h3>
               <p>Um agente de Inteligência Artificial no WhatsApp, criado com n8n, envia o cardápio, tira dúvidas e encaminha pedidos e reservas para a sua equipe.</p>
               <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg><span>Cardápio, horários e taxa de entrega na hora</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg><span>Reservas de mesa organizadas</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg><span>Mensagens para o cliente voltar a pedir</span></li></ul>
@@ -759,7 +784,7 @@
           <article class="feature reveal">
             <div class="feature-media cutout"><img src="/assets/img/marketing/mao-graficos-480.webp" srcset="/assets/img/marketing/mao-graficos-480.webp 480w, /assets/img/marketing/mao-graficos-720.webp 720w" sizes="(max-width: 860px) 100vw, 560px" alt="Mão tocando gráficos e indicadores de marketing" width="720" height="730" loading="lazy" decoding="async"></div>
             <div>
-              <span class="tag">Mensuração</span>
+              <span class="tag"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></i>Mensuração</span>
               <h3>Você sabe quanto custa cada pedido</h3>
               <p>Acompanhamos pedidos, ticket médio e custo por pedido em cada canal, para investir no que traz venda com margem.</p>
               <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg><span>Custo por pedido e por reserva</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg><span>Comparativo entre canal próprio e aplicativos</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg><span>Relatórios por unidade para redes</span></li></ul>
@@ -812,31 +837,34 @@
 
     <!-- ===================== 7. FAIXA DE CTA ===================== -->
     <section class="cta-band" aria-labelledby="titulo-cta">
+      <div class="bg"><img src="/assets/img/cta-bg-1000.webp" alt="" width="1000" height="494" loading="lazy" decoding="async"></div>
       <div class="wrap">
-        <div>
-          <h2 id="titulo-cta">Quer vender mais no seu próprio canal?</h2>
-          <p>Conte como está seu restaurante hoje. A gente mostra onde estão os pedidos que estão indo para a concorrência.</p>
-          <p class="invest-line">Investimento em mídia a partir de <strong>R$ 2.000/mês</strong>. <a href="#investimento">Entenda</a></p>
+        <span class="label">Próximo passo</span>
+        <h2 id="titulo-cta">Quer vender mais no seu próprio canal?</h2>
+        <p>Conte como está seu restaurante hoje. A gente mostra onde estão os pedidos que estão indo para a concorrência.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary js-wa" href="https://wa.me/5562994141488?text=Ol%C3%A1%21%20Vim%20da%20p%C3%A1gina%20de%20restaurantes%20e%20quero%20mais%20pedidos%20para%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4.9 2.9.8 3.4.7.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg> Falar com a especialista</a>
+          <a class="btn btn-ghost" href="#como-funciona">Ver como funciona</a>
         </div>
-        <a class="btn btn-primary js-wa" href="https://wa.me/5562994141488?text=Ol%C3%A1%21%20Vim%20da%20p%C3%A1gina%20de%20restaurantes%20e%20quero%20mais%20pedidos%20para%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4.9 2.9.8 3.4.7.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg> Falar com a especialista</a>
+        <p class="invest-line">Investimento em mídia a partir de <strong>R$ 2.000/mês</strong>. <a href="#investimento">Entenda</a></p>
       </div>
     </section>
 
     <!-- ===================== 8. POR QUE A TRÍSCELE ===================== -->
     <section class="section why" id="por-que" aria-labelledby="titulo-porque">
       <div class="wrap">
-        <div class="section-head">
+        <div class="why-top solo">
+          <div class="section-head">
           <span class="label">Por que a Tríscele</span>
           <h2 id="titulo-porque">Experiência real com food service</h2>
           <p style="color:var(--muted)">Já conduzimos o marketing de operações de food service, negócios locais e redes de franquias, com foco em pedidos e movimento, não em curtidas.</p>
         </div>
-        <div class="why-list">
-          <div class="why-item reveal"><h3>Foco em pedido, não em alcance</h3><p>Tudo é medido até o pedido ou a reserva.</p></div>
-          <div class="why-item reveal"><h3>Pronto para redes e franquias</h3><p>Campanhas, perfis e relatórios por unidade, com o padrão da marca.</p></div>
-          <div class="why-item reveal"><h3>Tecnologia a favor da operação</h3><p>IA e automação para a equipe atender mais rápido no horário de pico.</p></div>
-          
         </div>
-        
+        <div class="why-list">
+          <div class="why-item reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div><h3>Foco em pedido, não em alcance</h3><p>Tudo é medido até o pedido ou a reserva.</p></div>
+          <div class="why-item reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3>Pronto para redes e franquias</h3><p>Campanhas, perfis e relatórios por unidade, com o padrão da marca.</p></div>
+          <div class="why-item reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01M9 16.5h6"/><circle cx="12" cy="3.5" r="1"/></svg></div><h3>Tecnologia a favor da operação</h3><p>IA e automação para a equipe atender mais rápido no horário de pico.</p></div>
+        </div>
       </div>
     </section>
 
