@@ -642,7 +642,28 @@
     .related a:hover{border-color:var(--teal);color:var(--teal-deep);background:rgba(14,162,189,.06)}
     @media (prefers-reduced-motion: reduce){ .chip{animation:none} }
   </style>
-</head>
+<style>
+.vsv{margin-top:clamp(56px,7vw,88px)}
+.vsv .vhead{max-width:720px;margin:0 auto 34px;text-align:center}.vsv .vhead h3{font:700 clamp(26px,3.4vw,34px)/1.2 var(--f-display);color:var(--ink);margin:8px 0 10px}.vsv .vhead p{margin:0;color:var(--muted);font-size:17px;line-height:1.6}
+.vsv .tabs{display:flex;gap:10px;justify-content:center;margin-bottom:22px;flex-wrap:wrap}
+.vsv .tabs button{font:600 15px var(--f-display);border:1.5px solid var(--line);background:#fff;color:var(--ink);padding:12px 22px;border-radius:999px;cursor:pointer;transition:.2s}
+.vsv .tabs button:hover{border-color:var(--teal)}
+.vsv .tabs button small{margin-left:8px;background:#E2F4F8;color:var(--teal-deep);border-radius:99px;padding:2px 8px;font-size:12px}
+.vsv .tabs button[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.vsv .tabs button[aria-selected=true] small{background:var(--teal);color:#06242B}
+.vsv .panel{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}
+.vsv .rows{display:flex;flex-direction:column;gap:14px}
+.vsv .row{display:flex;gap:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;align-items:center}
+.vsv .row .ic{width:48px;height:48px;border-radius:12px;background:#E2F4F8;color:var(--teal-deep);display:flex;align-items:center;justify-content:center;flex:none}.vsv .row .ic svg{width:24px;height:24px}
+.vsv .row h4{font:600 18px var(--f-display);color:var(--ink);margin:0 0 4px}.vsv .row p{margin:0;color:var(--muted);font-size:15px;line-height:1.55}
+.vsv .row a.more{display:inline-block;margin-top:6px;font:600 14px var(--f-display);color:var(--teal-deep)}
+.vsv .ph{position:relative;border-radius:16px;overflow:hidden;min-height:300px;background:var(--ink)}
+.vsv .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vsv .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(14,18,20,.85))}
+.vsv .ph span{position:absolute;left:22px;right:22px;bottom:20px;z-index:2;color:#fff;font:600 17px var(--f-display)}
+.vsv [role=tabpanel][hidden]{display:none}
+@media (max-width:860px){.vsv .panel{grid-template-columns:1fr}.vsv .ph{min-height:200px;order:-1}}
+</style></head>
 
 <body>
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5ZWPN7QN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -768,52 +789,7 @@
           </article>
         </div>
 
-        <div class="extras">
-          <h3 class="sub">E também</h3>
-          <div class="services-grid">
-            <article class="service reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M6 6.5h.01M9 6.5h.01"/></svg></div><h3>Landing pages por produto</h3><p>Páginas rápidas e claras para cada produto, linha ou aplicação.</p></article>
-            <article class="service reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><h3>SEO e GEO</h3><p>Conteúdo técnico que responde às dúvidas dos compradores no Google e nas respostas das IAs.</p></article>
-            <article class="service reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg></div><h3>Conteúdo e LinkedIn</h3><p>Pautas e materiais que mostram autoridade, cases e diferenciais da empresa.</p></article>
-          </div>
-        </div>
-        <div class="extras" style="margin-top:clamp(40px,5vw,64px)">
-          <h3 class="sub">Além da mídia paga: tudo para sua marca no mesmo time</h3>
-          <p style="max-width:720px;margin:-6px 0 22px;color:var(--muted)">A Tríscele não faz só anúncios. Site, design, identidade visual, automações e conteúdo trabalham juntos para sustentar o que as campanhas trazem.</p>
-          <div class="services-grid">
-            <article class="service reveal">
-              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M6 6.5h.01M9 6.5h.01"/></svg></div>
-              <h3>Criação e otimização de sites</h3>
-              <p>Sites e landing pages rápidos, com UX moderna e prontos para SEO, ou melhorias no site que você já tem para converter mais.</p>
-            </article>
-            <article class="service reveal">
-              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/></svg></div>
-              <h3>Branding e identidade visual</h3>
-              <p>Nome, logotipo, paleta, tipografia e manual de marca, para sua empresa ser reconhecida e lembrada.</p>
-            </article>
-            <article class="service reveal">
-              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="9" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-              <h3>Design e peças gráficas</h3>
-              <p>Artes para anúncios, redes sociais, materiais impressos e apresentações, sempre alinhadas à sua identidade visual.</p>
-            </article>
-            <article class="service reveal">
-              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14"/></svg></div>
-              <h3>Automações de marketing</h3>
-              <p>Captação, classificação e nutrição de leads em n8n ou no seu CRM, com WhatsApp, e-mail e relatórios automáticos.</p>
-              <a class="more" href="/automacao-de-marketing/" aria-label="Saiba mais: Automações de marketing">Saiba mais <span aria-hidden="true">→</span></a>
-            </article>
-            <article class="service reveal">
-              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01M9 17h6"/></svg></div>
-              <h3>Agentes de IA</h3>
-              <p>Atendimento no WhatsApp 24 horas, qualificação de contatos e follow-up, passando para uma pessoa quando precisa.</p>
-              <a class="more" href="/agentes-de-ia/" aria-label="Saiba mais: Agentes de IA">Saiba mais <span aria-hidden="true">→</span></a>
-            </article>
-            <article class="service reveal">
-              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4z"/></svg></div>
-              <h3>Vídeo e produção de conteúdo</h3>
-              <p>Contamos com parceiros videomakers em todo o Brasil, sob demanda: captação de vídeo e fotos onde o seu negócio estiver.</p>
-            </article>
-          </div>
-        </div>
+        <div class="vsv"><div class="vhead"><span class="label">E também</span><h3>Tudo o que sua marca precisa, no mesmo time</h3><p>Além da mídia paga, o time cuida de site, design, conteúdo, vídeo e automação, para sustentar o que as campanhas trazem.</p></div><div class="tabs" role="tablist" aria-label="Serviços"><button role="tab" id="vt0" aria-controls="vp0">Ser encontrado<small>3</small></button><button role="tab" id="vt1" aria-controls="vp1">Se destacar<small>4</small></button><button role="tab" id="vt2" aria-controls="vp2">Converter e atender<small>2</small></button></div><div class="panel" role="tabpanel" id="vp0" aria-labelledby="vt0"><div class="rows"><div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M6 6.5h.01M9 6.5h.01"/></svg></div><div><h4>Landing pages por produto</h4><p>Páginas rápidas e claras para cada produto, linha ou aplicação.</p></div></div><div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><div><h4>SEO e GEO</h4><p>Conteúdo técnico que responde às dúvidas dos compradores no Google e nas respostas das IAs.</p></div></div><div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M6 6.5h.01M9 6.5h.01"/></svg></div><div><h4>Criação e otimização de sites</h4><p>Sites e landing pages rápidos, com UX moderna e prontos para SEO, ou melhorias no site que você já tem para converter mais.</p></div></div></div><div class="ph"><img src="/assets/img/nichos/b2b/b2b-cta-1000.webp" alt="" loading="lazy" decoding="async" style="object-position:72% 30%"><span>Ser encontrado por quem está buscando</span></div></div><div class="panel" role="tabpanel" id="vp1" aria-labelledby="vt1"><div class="rows"><div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg></div><div><h4>Conteúdo e LinkedIn</h4><p>Pautas e materiais que mostram autoridade, cases e diferenciais da empresa.</p></div></div><div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/></svg></div><div><h4>Branding e identidade visual</h4><p>Nome, logotipo, paleta, tipografia e manual de marca, para sua empresa ser reconhecida e lembrada.</p></div></div><div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="9" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div><div><h4>Design e peças gráficas</h4><p>Artes para anúncios, redes sociais, materiais impressos e apresentações, sempre alinhadas à sua identidade visual.</p></div></div><div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4z"/></svg></div><div><h4>Vídeo e produção de conteúdo</h4><p>Contamos com parceiros videomakers em todo o Brasil, sob demanda: captação de vídeo e fotos onde o seu negócio estiver.</p></div></div></div><div class="ph"><img src="/assets/img/nichos/b2b/b2b-cta-1000.webp" alt="" loading="lazy" decoding="async" style="object-position:78% 20%"><span>Uma marca que chama atenção e fica na memória</span></div></div><div class="panel" role="tabpanel" id="vp2" aria-labelledby="vt2"><div class="rows"><div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14"/></svg></div><div><h4>Automações de marketing</h4><p>Captação, classificação e nutrição de leads em n8n ou no seu CRM, com WhatsApp, e-mail e relatórios automáticos.</p><a class="more" href="/automacao-de-marketing/">Saiba mais <span aria-hidden="true">→</span></a></div></div><div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01M9 17h6"/></svg></div><div><h4>Agentes de IA</h4><p>Atendimento no WhatsApp 24 horas, qualificação de contatos e follow-up, passando para uma pessoa quando precisa.</p><a class="more" href="/agentes-de-ia/">Saiba mais <span aria-hidden="true">→</span></a></div></div></div><div class="ph"><img src="/assets/img/nichos/b2b/b2b-cta-1000.webp" alt="" loading="lazy" decoding="async" style="object-position:75% 30%"><span>Cada contato atendido e acompanhado até o fechamento</span></div></div></div>
       </div>
     </section>
 
@@ -1153,5 +1129,5 @@
   })();
   
   </script>
-</body>
+<script>(function(){document.querySelectorAll('.vsv').forEach(function(w){var b=w.querySelectorAll('[role=tab]'),p=w.querySelectorAll('[role=tabpanel]');function sel(i){b.forEach(function(x,j){x.setAttribute('aria-selected',j===i);x.tabIndex=j===i?0:-1});p.forEach(function(x,j){x.hidden=j!==i})}b.forEach(function(x,i){x.addEventListener('click',function(){sel(i)});x.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){sel((i+1)%b.length);b[(i+1)%b.length].focus()}if(e.key==='ArrowLeft'){sel((i+b.length-1)%b.length);b[(i+b.length-1)%b.length].focus()}})});sel(0)})})();</script></body>
 </html>
